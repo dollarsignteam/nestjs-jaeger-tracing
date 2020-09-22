@@ -1,0 +1,7 @@
+type Query {
+  getHello: String
+}
+
+type Mutation {
+  echoMessage(message: String): String
+}

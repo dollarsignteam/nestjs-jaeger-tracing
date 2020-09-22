@@ -1,0 +1,17 @@
+{
+  "editor.codeActionsOnSave": [
+    "source.organizeImports",
+    "source.fixAll",
+  ],
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.insertFinalNewline": true,
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "files.associations": {
+    "*.Makefile": "makefile",
+    "*.env*": "dotenv"
+  }
+}
