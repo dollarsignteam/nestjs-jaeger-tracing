@@ -2,9 +2,11 @@ import { AsyncContext } from '@donews/nestjs-async-hooks';
 import { Logger } from '@nestjs/common';
 import { ReadPacket, Serializer } from '@nestjs/microservices';
 import { Tags } from 'opentracing';
+
 import { TRACING_CARRIER_INFO } from '../constants';
 import { TracingContext, TracingData } from '../interfaces';
 import { TracerProvider } from '../tracer';
+
 import { isRequestPacket } from './packet.utils';
 
 export class TracingSerializer implements Serializer {
@@ -20,10 +22,10 @@ export class TracingSerializer implements Serializer {
     try {
       return this.asyncContext.get(TRACING_CARRIER_INFO);
     } catch (error) {
-      const { message } = error as Error;
+      // const { message } = error as Error;
       const messagePattern = JSON.stringify(packet.pattern);
       this.logger.warn(`Serialize without tracing: ${messagePattern}`);
-      this.logger.warn(message);
+      // this.logger.warn(message);
       return undefined;
     }
   }
