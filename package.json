@@ -1,6 +1,6 @@
 {
   "name": "@dollarsign/nestjs-jaeger-tracing",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "NestJS jaeger tracing",
   "license": "MIT",
   "main": "dist/index",
