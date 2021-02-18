@@ -67,8 +67,8 @@ export class TracingInterceptor implements NestInterceptor {
       const ctx = GqlExecutionContext.create(context);
       ctx.getContext<TracingObject>().tracing = tracingData;
       const { path } = ctx.getInfo<GraphQLResolveInfo>();
-      spanTags.set('graphql.name', `${path.key}`);
-      spanTags.set('graphql.type', `${path.typename}`.toLowerCase());
+      spanTags.set('graphql.name', `${path?.key}`);
+      spanTags.set('graphql.type', `${path?.typename}`.toLowerCase());
     }
     if (contextType === 'http') {
       const ctx = context.switchToHttp();
