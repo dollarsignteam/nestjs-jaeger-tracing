@@ -1,5 +1,5 @@
 {
-  "name": "@dollarsignteam/nestjs-jaeger-tracing",
+  "name": "@dollarsign/nestjs-jaeger-tracing",
   "version": "1.0.4",
   "description": "NestJS jaeger tracing",
   "license": "MIT",
