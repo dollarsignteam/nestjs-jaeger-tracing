@@ -18,25 +18,24 @@ export class TracingSerializer implements Serializer {
     this.asyncContext = AsyncContext.getInstance();
   }
 
-  getTracingData(packet: ReadPacket): TracingData {
+  getTracingData(): TracingData {
     try {
       return this.asyncContext.get(TRACING_CARRIER_INFO);
     } catch (error) {
-      // const { message } = error as Error;
-      const messagePattern = JSON.stringify(packet.pattern);
-      this.logger.warn(`Serialize without tracing: ${messagePattern}`);
-      // this.logger.warn(message);
+      // eslint-disable-next-line no-console
+      console.log(error);
       return undefined;
     }
   }
 
   createTracing(packet: ReadPacket): TracingData {
-    const parentTracing = this.getTracingData(packet);
     const tracingProvider = TracerProvider.getInstance();
     if (!tracingProvider) {
+      const parentTracing = this.getTracingData();
       this.logger.warn('TracerProvider Instance could not be created');
       return parentTracing;
     }
+    const parentTracing = this.getTracingData();
     const tracer = tracingProvider.getTracer();
     const operation = ['rpc', 'client'].join(':');
     const parentSpan = tracingProvider.extractTracing(parentTracing);
