@@ -23,7 +23,11 @@ export class TracingSerializer implements Serializer {
       return this.asyncContext.get(TRACING_CARRIER_INFO);
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.log(error);
+      console.log(
+        `[TracingSerializer] [getTracingData] get tracing carrier information faild. ${
+          (error as Error).message
+        }`,
+      );
       return undefined;
     }
   }
@@ -32,7 +36,9 @@ export class TracingSerializer implements Serializer {
     const tracingProvider = TracerProvider.getInstance();
     if (!tracingProvider) {
       const parentTracing = this.getTracingData();
-      this.logger.warn('TracerProvider Instance could not be created');
+      this.logger.warn(
+        '[TracingSerializer] [createTracing] TracerProvider Instance could not be created',
+      );
       return parentTracing;
     }
     const parentTracing = this.getTracingData();
