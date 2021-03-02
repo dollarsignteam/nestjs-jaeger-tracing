@@ -24,7 +24,7 @@ export class TracingSerializer implements Serializer {
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(
-        `[TracingSerializer] [getTracingData] get tracing carrier information faild. ${
+        `[TracingSerializer] [getTracingData] get tracing carrier information failed. ${
           (error as Error).message
         }`,
       );
