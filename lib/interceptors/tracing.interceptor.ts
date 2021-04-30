@@ -91,8 +91,22 @@ export class TracingInterceptor implements NestInterceptor {
         parentSpanContext = this.tracerProvider.extractTracing(tracing);
       }
       ctx.getContext<TracingObject>().tracing = tracingData;
-      const pattern = ctx.getContext<TcpContext>().getPattern();
-      spanTags.set('rpc.pattern', pattern);
+      if (typeof ctx.getContext().getPattern === 'function') {
+        const pattern = ctx.getContext().getPattern();
+        spanTags.set('rpc.pattern', pattern);
+      }
+      if (typeof ctx.getContext().getChannel === 'function') {
+        const channel = ctx.getContext().getChannel();
+        spanTags.set('rpc.channel', channel);
+      }
+      if (typeof ctx.getContext().getSubject === 'function') {
+        const subject = ctx.getContext().getSubject();
+        spanTags.set('rpc.subject', subject);
+      }
+      if (typeof ctx.getContext().getTopic === 'function') {
+        const topic = ctx.getContext().getTopic();
+        spanTags.set('rpc.topic', topic);
+      }
       spanLogs.push({ payload: JSON.stringify(ctx.getData(), null, 2) });
     }
     return this.asyncContext.run(() => {
