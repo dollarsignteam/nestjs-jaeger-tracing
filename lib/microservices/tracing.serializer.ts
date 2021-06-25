@@ -22,12 +22,6 @@ export class TracingSerializer implements Serializer {
     try {
       return this.asyncContext.get(TRACING_CARRIER_INFO);
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(
-        `[TracingSerializer] [getTracingData] get tracing carrier information failed. ${
-          (error as Error).message
-        }`,
-      );
       return undefined;
     }
   }
