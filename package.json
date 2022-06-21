@@ -35,8 +35,8 @@
   ],
   "dependencies": {
     "@donews/nestjs-async-hooks": "^0.0.2",
-    "@nestjs/graphql": "^7.6.0",
-    "@nestjs/microservices": "^7.4.4",
+    "@nestjs/graphql": "^10.0.9",
+    "@nestjs/microservices": "^8.4.4",
     "@opentelemetry/api": "^0.11.0",
     "@opentelemetry/exporter-jaeger": "^0.11.0",
     "@opentelemetry/node": "^0.11.0",
@@ -45,7 +45,8 @@
     "express": "^4.17.1",
     "graphql": "^15.3.0",
     "lodash": "^4.17.20",
-    "opentracing": "^0.14.4"
+    "opentracing": "^0.14.4",
+    "ts-morph": "^14.0.0"
   },
   "peerDependencies": {
     "@nestjs/common": "^7.0.0",
